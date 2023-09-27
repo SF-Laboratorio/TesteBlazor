@@ -1,0 +1,27 @@
+﻿@page "/xpto"
+@inject XptoService XptoService
+
+<h3>XptoPagina</h3>
+
+@if (resultado == null)
+{
+    <p>Processando...</p>
+}
+else
+{
+    <ul>
+        @foreach (var num in resultado)
+        {
+            <li>@num</li>
+        }
+    </ul>
+}
+
+@code {
+    private int[]? resultado;
+
+    protected override void OnInitialized()
+    {
+        resultado = XptoService.Processar();
+    }
+}
